@@ -24,6 +24,8 @@
       Company <input type="text" name="company" id="company"/></br>
       <input type="submit" name="submit" value="Submit" />
 </form>
+<br>
+<a href="emilygarvin-uclcs.azurewebsites.net/search.php">Search the database</a>
 <?php
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
