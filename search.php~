@@ -58,12 +58,13 @@
  //And we display the results 
  while($result = mysql_fetch_array( $data )) 
  { 
- echo $result['fname']; 
+ echo $result['name']; 
  echo " "; 
- echo $result['lname']; 
+ echo $result['email']; 
  echo "<br>"; 
- echo $result['info']; 
+ echo $result['company']; 
  echo "<br>"; 
+ echo $result['date'];
  echo "<br>"; 
  } 
  
