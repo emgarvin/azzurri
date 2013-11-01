@@ -46,7 +46,7 @@ $searchbox= $_POST["searchbox"];
     if(!empty($_POST)) {
     try {
 
-$sql_select = "SELECT * FROM registration_tbl WHERE name LIKE ? AND email LIKE ? AND company LIKE ?";
+$sql_select = "SELECT * FROM registration_tbl WHERE name LIKE ? OR email LIKE ? OR company LIKE ?";
         $stmt = $conn->prepare($sql_select);
         $stmt->bindValue(1, '%'.$searchbox.'%');
         $stmt->bindValue(2, '%'.$searchbox.'%');
