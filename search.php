@@ -41,6 +41,9 @@
         die(var_dump($e));
     }
 
+    if(!empty($_POST)) {
+    try {
+
 $sql_select = "SELECT FROM registration_tbl (name, email, company, date) 
                    VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_select);
@@ -49,15 +52,9 @@ $sql_select = "SELECT FROM registration_tbl (name, email, company, date)
         $stmt->bindValue(3, $company);
         $stmt->bindValue(4, $date);
         $stmt->execute();
-    }
-    catch(Exception $e) {
-        die(var_dump($e));
-    }
 
-    }
-    // Retrieve data
-    $sql_results = "SELECT * FROM registration_tbl";
-    $stmt = $conn->query($sql_results);
+
+    
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
         echo "<h2>Search results:</h2>";
@@ -76,6 +73,11 @@ $sql_select = "SELECT FROM registration_tbl (name, email, company, date)
     } else {
         echo "<h3>No one is currently registered.</h3>";
     }
+    }
+    catch(Exception $e) {
+        die(var_dump($e));
+    }
+}
 ?>
 </body>
 </html>
