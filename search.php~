@@ -30,68 +30,6 @@
 
 </form>
 
- <?php
- //This is only displayed if they have submitted the form 
- if ($searching =="yes") 
- { 
- echo "<h2>Results</h2><p>"; 
  
- //If they did not enter a search term we give them an error 
- if ($find == "") 
- { 
- echo "<p>You forgot to enter a search term"; 
- exit; 
- } 
- 
- // Otherwise we connect to our Database 
-    // DB connection info
-    //TODO: Update the values for $host, $user, $pwd, and $db
-    //using the values you retrieved earlier from the portal.
-    $host = "eu-cdbr-azure-west-b.cloudapp.net";
-    $user = "b29e134ba5c0fe";
-    $pwd = "59f51632";
-    $db = "syseng2cwdb";
-    // Connect to database.
-    try {
-        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    }
-    catch(Exception $e){
-        die(var_dump($e));
-    }
- 
- // filtering 
- $find = strtoupper($find); 
- $find = strip_tags($find); 
- $find = trim ($find); 
- 
- //Now we search for our search term, in the field the user specified 
- $data = mysql_query("SELECT * FROM registration_tbl WHERE upper($field) LIKE'%$find%'"); 
- 
- //And we display the results 
- while($result = mysql_fetch_array( $data )) 
- { 
- echo $result['name']; 
- echo " "; 
- echo $result['email']; 
- echo "<br>"; 
- echo $result['company']; 
- echo "<br>"; 
- echo $result['date'];
- echo "<br>"
- echo "<br>"; 
- } 
- 
- //This counts the number or results - and if there wasn't any it gives them a little message explaining that 
- $anymatches=mysql_num_rows($data); 
- if ($anymatches == 0) 
- { 
- echo "Sorry, but we can not find an entry to match your query<br><br>"; 
- } 
- 
- //And we remind them what they searched for 
- echo "<b>Searched For:</b> " .$find; 
- } 
- ?> 
 </body>
 </html>
