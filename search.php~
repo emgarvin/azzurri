@@ -30,7 +30,7 @@
 
 </form>
 
- <? 
+ <?php
  //This is only displayed if they have submitted the form 
  if ($searching =="yes") 
  { 
@@ -44,26 +44,41 @@
  } 
  
  // Otherwise we connect to our Database 
- mysql_connect("mysql.yourhost.com", "user_name", "password") or die(mysql_error()); 
- mysql_select_db("database_name") or die(mysql_error()); 
+    // DB connection info
+    //TODO: Update the values for $host, $user, $pwd, and $db
+    //using the values you retrieved earlier from the portal.
+    $host = "eu-cdbr-azure-west-b.cloudapp.net";
+    $user = "b29e134ba5c0fe";
+    $pwd = "59f51632";
+    $db = "syseng2cwdb";
+    // Connect to database.
+    try {
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    }
+    catch(Exception $e){
+        die(var_dump($e));
+    }
  
- // We preform a bit of filtering 
+ // filtering 
  $find = strtoupper($find); 
  $find = strip_tags($find); 
  $find = trim ($find); 
  
  //Now we search for our search term, in the field the user specified 
- $data = mysql_query("SELECT * FROM users WHERE upper($field) LIKE'%$find%'"); 
+ $data = mysql_query("SELECT * FROM registration_tbl WHERE upper($field) LIKE'%$find%'"); 
  
  //And we display the results 
  while($result = mysql_fetch_array( $data )) 
  { 
- echo $result['fname']; 
+ echo $result['name']; 
  echo " "; 
- echo $result['lname']; 
+ echo $result['email']; 
  echo "<br>"; 
- echo $result['info']; 
+ echo $result['company']; 
  echo "<br>"; 
+ echo $result['date'];
+ echo "<br>"
  echo "<br>"; 
  } 
  
