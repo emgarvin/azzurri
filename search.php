@@ -46,7 +46,7 @@ $searchbox= $_POST["searchbox"];
     if(!empty($_POST)) {
     try {
 
-$sql_select = "SELECT FROM registration_tbl WHERE $name LIKE $searchbox";
+$sql_select = "SELECT FROM registration_tbl WHERE $name REGEXP '$searchbox'";
         $stmt = $conn->prepare($sql_select);
         $stmt->bindValue(1, $name);
         $stmt->bindValue(2, $email);
