@@ -53,7 +53,7 @@
  $find = trim ($find); 
  
  //Now we search for our search term, in the field the user specified 
- $data = mysql_query("SELECT * FROM users WHERE upper($field) LIKE'%$find%'"); 
+ $data = mysql_query("SELECT * FROM registration_tbl WHERE upper($field) LIKE'%$find%'"); 
  
  //And we display the results 
  while($result = mysql_fetch_array( $data )) 
