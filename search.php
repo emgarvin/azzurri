@@ -44,8 +44,8 @@
  } 
  
  // Otherwise we connect to our Database 
- mysql_connect("mysql.yourhost.com", "user_name", "password") or die(mysql_error()); 
- mysql_select_db("database_name") or die(mysql_error()); 
+ mysql_connect("eu-cdbr-azure-west-b.cloudapp.net", "b29e134ba5c0fe", "59f51632") or die(mysql_error()); 
+ mysql_select_db("syseng2cwdb") or die(mysql_error()); 
  
  // We preform a bit of filtering 
  $find = strtoupper($find); 
