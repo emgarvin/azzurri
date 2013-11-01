@@ -22,10 +22,10 @@
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
     //using the values you retrieved earlier from the portal.
-    $host = "value of Data Source";
-    $user = "value of User Id";
-    $pwd = "value of Password";
-    $db = "value of Database";
+    $host = "eu-cdbr-azure-west-b.cloudapp.net";
+    $user = "b29e134ba5c0fe";
+    $pwd = "59f51632";
+    $db = "syseng2cwdb";
     // Connect to database.
     try {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
