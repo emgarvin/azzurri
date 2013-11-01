@@ -41,19 +41,18 @@
         die(var_dump($e));
     }
 
+$searchbox= $_POST["searchbox"];
+
     if(!empty($_POST)) {
     try {
 
-$sql_select = "SELECT FROM registration_tbl (name, email, company, date) 
-                   VALUES (?,?,?,?)";
+$sql_select = "SELECT FROM registration_tbl WHERE $name LIKE $searchbox";
         $stmt = $conn->prepare($sql_select);
         $stmt->bindValue(1, $name);
         $stmt->bindValue(2, $email);
         $stmt->bindValue(3, $company);
         $stmt->bindValue(4, $date);
         $stmt->execute();
-
-
     
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
@@ -71,7 +70,7 @@ $sql_select = "SELECT FROM registration_tbl (name, email, company, date)
         }
         echo "</table>";
     } else {
-        echo "<h3>No one is currently registered.</h3>";
+        echo "<h3>No one matching that search value is currently registered.</h3>";
     }
     }
     catch(Exception $e) {
