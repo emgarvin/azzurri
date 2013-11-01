@@ -50,11 +50,11 @@ $sql_select = "SELECT FROM registration_tbl (name, email, company, date)
 
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl";
-    $stmt = $conn->query($sql_select);
+    $sql_results = "SELECT * FROM registration_tbl";
+    $stmt = $conn->query($sql_results);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
-        echo "<h2>People who are registered:</h2>";
+        echo "<h2>Search results:</h2>";
         echo "<table>";
         echo "<tr><th>Name</th>";
         echo "<th>Email</th>";
