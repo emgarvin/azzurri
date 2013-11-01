@@ -18,6 +18,12 @@
 <body>
 <h1>Search for a registrant</h1>
 
+    <form action="search.php" method="post">
+    <input type="text" value="Enter Site ID" name="searchbox" maxlength="30">
+    
+    <input type="submit" value="Submit"/>
+    </form>
+
  <?php
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
@@ -50,11 +56,11 @@ $sql_select = "SELECT FROM registration_tbl (name, email, company, date)
 
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl";
-    $stmt = $conn->query($sql_select);
+    $sql_results = "SELECT * FROM registration_tbl";
+    $stmt = $conn->query($sql_results);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
-        echo "<h2>People who are registered:</h2>";
+        echo "<h2>Search results:</h2>";
         echo "<table>";
         echo "<tr><th>Name</th>";
         echo "<th>Email</th>";

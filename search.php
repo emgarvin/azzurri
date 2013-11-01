@@ -18,6 +18,12 @@
 <body>
 <h1>Search for a registrant</h1>
 
+    <form action="search.php" method="post">
+    <input type="text" value="Enter Search Value" name="searchbox" maxlength="30">
+    
+    <input type="submit" value="Submit"/>
+    </form>
+
  <?php
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
